@@ -16,6 +16,27 @@
   <meta property="og:site_name" content="우아운세">
   <meta name="twitter:card" content="summary_large_image">
 
+  {% if page.layout == 'ddi' or page.layout == 'star' or page.layout == 'tarot-card' or page.layout == 'dream' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ page.description | jsonify }},
+    "url": "{{ page.url | absolute_url }}",
+    "image": "{{ '/assets/og-image.png' | absolute_url }}",
+    "inLanguage": "ko",
+    "author": { "@type": "Organization", "name": "우아운세" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "우아운세",
+      "logo": { "@type": "ImageObject", "url": "{{ '/assets/og-image.png' | absolute_url }}" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page.url | absolute_url }}" }
+  }
+  </script>
+  {% endif %}
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
