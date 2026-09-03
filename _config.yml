@@ -1,0 +1,30 @@
+title: 우아운세 - 사주·타로·궁합·꿈해몽
+description: >-
+  생년월일로 보는 사주팔자, 궁합, 오늘의 타로, 띠별·별자리 운세, 꿈해몽 사전까지
+  무료로 확인하세요.
+url: "https://wooaunse.wooahouse.com"
+baseurl: ""
+lang: ko
+timezone: Asia/Seoul
+author: WooaHouse
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - scripts/
+  - "*.py"
+  - "*.log"
+  - "*.txt"
+  - README.md
+  - .gitignore
+  - vendor/
+  - _data_src/

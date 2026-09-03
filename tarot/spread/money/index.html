@@ -1,0 +1,43 @@
+---
+layout: default
+title: 재물운 타로 3카드 스프레드
+description: 현재 재정 상황, 다가올 기회, 주의할 점을 3장의 타로카드로 확인하는 무료 재물운 스프레드입니다.
+permalink: /tarot/spread/money/
+---
+
+<div class="hero">
+  <span class="eyebrow">💰 재물운 3카드 스프레드</span>
+  <h1>나의 재물운은<br><span class="accent">지금 어떤 흐름일까요?</span></h1>
+  <p>현재 상황 · 다가올 기회 · 주의할 점, 세 장의 카드로 확인해보세요.</p>
+</div>
+
+<div class="page-with-sidebar">
+<div>
+
+  <div id="drawArea" class="tarot-spread"></div>
+  <div id="resultArea" style="display:none;"></div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div style="text-align:center;margin:20px 0;">
+    <button class="btn-gold" onclick="location.reload()">🔄 다시 뽑기</button>
+  </div>
+
+  <div class="notice-box">
+    💡 세 장의 카드를 순서대로 클릭해서 뒤집어보세요. 현재 상황 → 다가올 기회 → 주의할 점 순으로 해석하면 좋습니다.
+  </div>
+
+  <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/tarot/spread/love/" class="btn-ghost">💕 연애운 스프레드</a>
+    <a href="/tarot/spread/job/" class="btn-ghost">💼 취업·직업운 스프레드</a>
+  </div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+<script src="{{ '/assets/js/tarot-data.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/tarot-draw.js' | relative_url }}"></script>
+<script>
+  TarotDraw.init('drawArea', ['현재 재정 상황', '다가올 기회', '주의할 점'], 'resultArea');
+</script>

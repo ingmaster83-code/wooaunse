@@ -1,0 +1,78 @@
+---
+layout: default
+title: 꿈해몽 사전 - 꿈에 나온 동물·사건·자연현상의 의미
+description: 동물꿈, 죽는꿈, 돈꿈, 이빨빠지는꿈 등 다양한 꿈해몽을 검색하고 카테고리별로 찾아보세요. 무료 꿈풀이 사전.
+---
+
+<div class="hero">
+  <span class="eyebrow">🔮 무료 꿈해몽 사전</span>
+  <h1>지난밤 꿈,<br><span class="accent">무슨 의미였을까요?</span></h1>
+  <p>동물·사건·자연현상·사물까지, 꿈에 나온 상징의 의미를 검색해보세요.</p>
+</div>
+
+<div class="top-ad-bar">{% include ad.html %}</div>
+
+<div class="section">
+<div class="section-inner">
+  <input type="text" id="dreamSearch" class="search-box" placeholder="꿈 키워드로 검색 (예: 돈, 뱀, 이빨, 죽음)">
+  <div class="filter-bar">
+    <button class="filter-chip active" data-f="all">전체</button>
+    <button class="filter-chip" data-f="동물">동물</button>
+    <button class="filter-chip" data-f="사건">사건</button>
+    <button class="filter-chip" data-f="자연">자연</button>
+    <button class="filter-chip" data-f="사물">사물</button>
+    <button class="filter-chip" data-f="사람">사람</button>
+    <button class="filter-chip" data-f="신체">신체</button>
+  </div>
+  <div class="grid-cards" id="dreamGrid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));">
+    {% assign sorted = site.pages | where_exp: "p", "p.layout == 'dream'" | sort: "dreamTitle" %}
+    {% for p in sorted %}
+    <a href="{{ p.url | relative_url }}" class="mystic-card" data-category="{{ p.category }}" data-name="{{ p.dreamTitle }}">
+      <span class="icon">{{ p.emoji }}</span>
+      <span class="name" style="font-size:.85rem;">{{ p.dreamTitle }}</span>
+    </a>
+    {% endfor %}
+  </div>
+  <p id="noResult" style="display:none;text-align:center;color:var(--text-dim);padding:20px;">검색 결과가 없습니다.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-inner">
+  <div class="notice-box">
+    💡 꿈해몽은 재미로 보는 콘텐츠입니다. 같은 꿈이라도 상황과 감정에 따라 의미가 달라질 수 있어요. 더 정확한 오늘의 운세는 <a href="/saju/">사주팔자 계산기</a>와 <a href="/tarot/today/">오늘의 타로</a>에서 함께 확인해보세요.
+  </div>
+</div>
+</div>
+
+<script>
+var chips = document.querySelectorAll('.filter-chip');
+var cards = document.querySelectorAll('#dreamGrid .mystic-card');
+var searchInput = document.getElementById('dreamSearch');
+var currentFilter = 'all';
+
+function applyFilter() {
+  var q = searchInput.value.trim().toLowerCase();
+  var visible = 0;
+  cards.forEach(function (c) {
+    var category = c.dataset.category || '';
+    var name = c.dataset.name || '';
+    var matchFilter = currentFilter === 'all' || category === currentFilter;
+    var matchSearch = !q || name.toLowerCase().indexOf(q) > -1;
+    var show = matchFilter && matchSearch;
+    c.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('noResult').style.display = visible === 0 ? '' : 'none';
+}
+
+chips.forEach(function (chip) {
+  chip.addEventListener('click', function () {
+    chips.forEach(function (c) { c.classList.remove('active'); });
+    chip.classList.add('active');
+    currentFilter = chip.dataset.f;
+    applyFilter();
+  });
+});
+searchInput.addEventListener('input', applyFilter);
+</script>

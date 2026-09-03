@@ -1,0 +1,28 @@
+---
+layout: default
+title: 별자리 운세 - 12별자리 전체보기
+description: 양자리부터 물고기자리까지 12별자리의 성격과 2026년 운세, 연애운·재물운·직업운을 확인하세요.
+---
+
+<div class="hero">
+  <span class="eyebrow">♈ 12별자리 운세</span>
+  <h1>당신의 <span class="accent">별자리</span>는 무엇인가요?</h1>
+  <p>태어난 날짜로 알아보는 성격과 2026년 운세를 확인해보세요.</p>
+</div>
+
+<div class="section">
+<div class="section-inner">
+  <div class="grid-cards">
+    {% assign sorted = site.pages | where_exp: "p", "p.layout == 'star'" | sort: "order" %}
+    {% for p in sorted %}
+    <a href="{{ p.url | relative_url }}" class="mystic-card">
+      <span class="icon">{{ p.emoji }}</span>
+      <span class="name">{{ p.starName }}</span>
+      <span class="sub">{{ p.period }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+<div class="top-ad-bar">{% include ad.html %}</div>

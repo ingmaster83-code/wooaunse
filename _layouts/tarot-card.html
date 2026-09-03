@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<nav class="breadcrumb"><a href="/">홈</a> <span class="sep">›</span> <a href="/tarot/">타로</a> <span class="sep">›</span> <span>{{ page.cardName }}</span></nav>
+
+<div class="detail-header">
+  <span class="icon-big">{{ page.emoji }}</span>
+  <h1>{{ page.cardName }} ({{ page.hanja }})</h1>
+  <p class="tagline">{{ page.arcana }} {{ page.number }} · {{ page.keyword }}</p>
+</div>
+
+<div class="page-with-sidebar">
+<div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div class="info-panel">
+    <h2>☀️ 정방향 의미</h2>
+    <p>{{ page.uprightMeaning }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>🌑 역방향 의미</h2>
+    <p>{{ page.reversedMeaning }}</p>
+  </div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div class="stat-row" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="stat-box"><div class="label">💕 연애</div><div class="value" style="font-size:.8rem;font-weight:500;">{{ page.love }}</div></div>
+    <div class="stat-box"><div class="label">💰 재물</div><div class="value" style="font-size:.8rem;font-weight:500;">{{ page.money }}</div></div>
+    <div class="stat-box"><div class="label">💼 직업</div><div class="value" style="font-size:.8rem;font-weight:500;">{{ page.job }}</div></div>
+  </div>
+
+  <div class="notice-box">
+    💡 타로는 정해진 미래를 알려주기보다, 지금 상황을 다른 시각으로 바라보게 돕는 참고 도구입니다.
+  </div>
+
+  <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/tarot/today/" class="btn-ghost">🔮 오늘의 타로 뽑기</a>
+    <a href="/tarot/" class="btn-ghost">🃏 타로카드 전체보기</a>
+  </div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>

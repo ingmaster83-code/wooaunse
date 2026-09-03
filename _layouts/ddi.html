@@ -1,0 +1,76 @@
+---
+layout: default
+---
+
+<nav class="breadcrumb"><a href="/">홈</a> <span class="sep">›</span> <a href="/ddi/">띠별 운세</a> <span class="sep">›</span> <span>{{ page.animalName }}띠</span></nav>
+
+<div class="detail-header">
+  <span class="icon-big">{{ page.emoji }}</span>
+  <h1>{{ page.animalName }}띠 ({{ page.hanja }}) 운세</h1>
+  <p class="tagline">{{ page.keywords | join: " · " }}</p>
+</div>
+
+<div class="page-with-sidebar">
+<div>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="label">해당 연도</div><div class="value" style="font-size:.82rem;">{{ page.years }}</div></div>
+  </div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div class="info-panel">
+    <h2>🌟 {{ page.animalName }}띠 성격</h2>
+    <p>{{ page.personality }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>🐎 2026년 병오년 {{ page.animalName }}띠 총운</h2>
+    <p>{{ page.year2026 }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>💕 연애운</h2>
+    <p>{{ page.love }}</p>
+  </div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div class="info-panel">
+    <h2>💰 재물운</h2>
+    <p>{{ page.money }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>💼 직업운</h2>
+    <p>{{ page.job }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>🍀 건강운</h2>
+    <p>{{ page.health }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>🤝 궁합이 좋은 띠 · 주의할 띠</h2>
+    <p>궁합이 좋은 띠: <strong style="color:var(--gold-soft);">{{ page.goodMatch | join: ", " }}</strong></p>
+    <p style="margin-top:6px;">노력이 필요한 띠: <strong style="color:var(--purple-light);">{{ page.badMatch | join: ", " }}</strong></p>
+    <div class="related-row">
+      {% for m in page.goodMatch %}
+      <a href="/ddi/{{ m | remove: '띠' }}/" class="related-chip">{{ m }} 운세 →</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="notice-box">
+    💡 띠 운세는 태어난 해의 지지(地支)만을 기준으로 한 간단한 참고 정보입니다. 더 정밀한 결과는 <a href="/saju/">사주팔자 계산기</a>에서 생년월일시 전체를 확인해보세요.
+  </div>
+
+  <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/saju/" class="btn-ghost">🈴 정밀 사주 보기</a>
+    <a href="/today/" class="btn-ghost">🌅 오늘의 운세 보기</a>
+  </div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>

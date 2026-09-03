@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+<nav class="breadcrumb"><a href="/">홈</a> <span class="sep">›</span> <a href="/star/">별자리 운세</a> <span class="sep">›</span> <span>{{ page.starName }}</span></nav>
+
+<div class="detail-header">
+  <span class="icon-big">{{ page.emoji }}</span>
+  <h1>{{ page.starName }} {{ page.symbol }} 운세</h1>
+  <p class="tagline">{{ page.keywords | join: " · " }}</p>
+</div>
+
+<div class="page-with-sidebar">
+<div>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="label">기간</div><div class="value" style="font-size:.82rem;">{{ page.period }}</div></div>
+    <div class="stat-box"><div class="label">원소</div><div class="value">{{ page.element }}</div></div>
+    <div class="stat-box"><div class="label">지배행성</div><div class="value" style="font-size:.9rem;">{{ page.planet }}</div></div>
+  </div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div class="info-panel">
+    <h2>🌟 {{ page.starName }} 성격</h2>
+    <p>{{ page.personality }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>✨ 2026년 {{ page.starName }} 총운</h2>
+    <p>{{ page.year2026 }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>💕 연애운</h2>
+    <p>{{ page.love }}</p>
+  </div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div class="info-panel">
+    <h2>💰 재물운</h2>
+    <p>{{ page.money }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>💼 직업운</h2>
+    <p>{{ page.job }}</p>
+  </div>
+
+  <div class="info-panel">
+    <h2>🤝 궁합이 좋은 별자리 · 주의할 별자리</h2>
+    <p>궁합이 좋은 별자리: <strong style="color:var(--gold-soft);">{{ page.goodMatch | join: ", " }}</strong></p>
+    <p style="margin-top:6px;">노력이 필요한 별자리: <strong style="color:var(--purple-light);">{{ page.badMatch | join: ", " }}</strong></p>
+  </div>
+
+  <div class="notice-box">
+    💡 별자리 운세는 태양궁(태어난 날짜)만을 기준으로 한 간단한 참고 정보입니다. 더 정밀한 결과는 <a href="/saju/">사주팔자 계산기</a>에서 확인해보세요.
+  </div>
+
+  <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/ddi/" class="btn-ghost">🐯 띠별 운세 보기</a>
+    <a href="/today/" class="btn-ghost">🌅 오늘의 운세 보기</a>
+  </div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>

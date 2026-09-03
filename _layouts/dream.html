@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<nav class="breadcrumb"><a href="/">홈</a> <span class="sep">›</span> <a href="/dream/">꿈해몽</a> <span class="sep">›</span> <span>{{ page.dreamTitle }}</span></nav>
+
+<div class="detail-header">
+  <span class="icon-big">{{ page.emoji }}</span>
+  <h1>{{ page.dreamTitle }} 해몽</h1>
+  <p class="tagline">{{ page.summary }}</p>
+</div>
+
+<div class="page-with-sidebar">
+<div>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="label">분류</div><div class="value" style="font-size:.9rem;">{{ page.category }}</div></div>
+    <div class="stat-box"><div class="label">행운의 숫자</div><div class="value" style="font-size:.9rem;">{{ page.luckyNum }}</div></div>
+  </div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div class="info-panel">
+    <h2>💭 {{ page.dreamTitle }}, 무슨 의미일까요?</h2>
+    <p>{{ page.meaning }}</p>
+  </div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div class="notice-box">
+    💡 꿈해몽은 전통 해몽서와 상징 해석을 바탕으로 한 재미로 보는 콘텐츠입니다. 같은 꿈이라도 꾼 사람의 상황과 감정에 따라 의미가 달라질 수 있어요.
+  </div>
+
+  <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/dream/" class="btn-ghost">🔮 다른 꿈해몽 보기</a>
+    <a href="/tarot/today/" class="btn-ghost">🃏 오늘의 타로 보기</a>
+    <a href="/today/" class="btn-ghost">🌅 오늘의 운세 보기</a>
+  </div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>

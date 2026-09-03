@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | 우아운세{% else %}우아운세 - 사주·타로·궁합·꿈해몽{% endif %}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} | 우아운세{% else %}우아운세 - 사주·타로·궁합·꿈해몽{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:image" content="{{ '/assets/og-image.png' | absolute_url }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="우아운세">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZGENFSXWC"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9ZGENFSXWC');</script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6464921081676309" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="star-field" aria-hidden="true" id="starField"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{ '/' | relative_url }}" class="site-logo">
+      <span class="logo-icon">🔮</span>
+      <span class="logo-text">우아운세</span>
+    </a>
+    <nav class="header-nav">
+      <a href="{{ '/saju/' | relative_url }}">사주</a>
+      <a href="{{ '/gunghap/' | relative_url }}">궁합</a>
+      <a href="{{ '/tarot/' | relative_url }}">타로</a>
+      <a href="{{ '/ddi/' | relative_url }}">띠운세</a>
+      <a href="{{ '/star/' | relative_url }}">별자리</a>
+      <a href="{{ '/dream/' | relative_url }}">꿈해몽</a>
+      <a href="{{ '/today/' | relative_url }}">오늘의운세</a>
+    </nav>
+  </div>
+</header>
+
+<script src="{{ '/assets/js/wooa-sites-bar.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/ad-dev-placeholder.js' | relative_url }}"></script>
+
+<main class="site-main">
+  {{ content }}
+</main>
+<script src="{{ '/assets/js/wooa-sidebar.js' | relative_url }}"></script>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-disclaimer">
+      본 콘텐츠는 전통 명리학·서양 점성술·타로 이론을 바탕으로 한 오락 목적의 참고 정보입니다.<br>
+      중요한 의사결정은 반드시 전문가 상담 및 본인의 판단을 기준으로 하시기 바랍니다.
+    </p>
+    <p class="footer-links">
+      <a href="https://wooahouse.com">WooaHouse</a> ·
+      <a href="{{ '/privacy/' | relative_url }}">개인정보처리방침</a>
+    </p>
+    <p class="copyright">&copy; 2026 우아운세 · WooaHouse. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var field = document.getElementById('starField');
+  if (!field) return;
+  var n = window.innerWidth < 640 ? 40 : 70;
+  for (var i = 0; i < n; i++) {
+    var s = document.createElement('span');
+    s.style.left = (Math.random()*100) + '%';
+    s.style.top = (Math.random()*100) + '%';
+    s.style.animationDelay = (Math.random()*4) + 's';
+    var size = (Math.random()*1.5 + 1).toFixed(1);
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    field.appendChild(s);
+  }
+})();
+</script>
+
+</body>
+</html>

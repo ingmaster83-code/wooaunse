@@ -1,0 +1,43 @@
+---
+layout: default
+title: 취업·직업운 타로 3카드 스프레드
+description: 현재 상황, 다가올 변화, 조언을 3장의 타로카드로 확인하는 무료 취업·직업운 스프레드입니다.
+permalink: /tarot/spread/job/
+---
+
+<div class="hero">
+  <span class="eyebrow">💼 취업·직업운 3카드 스프레드</span>
+  <h1>나의 커리어는<br><span class="accent">어디로 향할까요?</span></h1>
+  <p>현재 상황 · 다가올 변화 · 조언, 세 장의 카드로 확인해보세요.</p>
+</div>
+
+<div class="page-with-sidebar">
+<div>
+
+  <div id="drawArea" class="tarot-spread"></div>
+  <div id="resultArea" style="display:none;"></div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div style="text-align:center;margin:20px 0;">
+    <button class="btn-gold" onclick="location.reload()">🔄 다시 뽑기</button>
+  </div>
+
+  <div class="notice-box">
+    💡 세 장의 카드를 순서대로 클릭해서 뒤집어보세요. 현재 상황 → 다가올 변화 → 조언 순으로 해석하면 좋습니다.
+  </div>
+
+  <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/tarot/spread/love/" class="btn-ghost">💕 연애운 스프레드</a>
+    <a href="/tarot/spread/money/" class="btn-ghost">💰 재물운 스프레드</a>
+  </div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+<script src="{{ '/assets/js/tarot-data.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/tarot-draw.js' | relative_url }}"></script>
+<script>
+  TarotDraw.init('drawArea', ['현재 상황', '다가올 변화', '조언'], 'resultArea');
+</script>

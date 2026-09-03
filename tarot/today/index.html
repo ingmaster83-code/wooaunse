@@ -1,0 +1,43 @@
+---
+layout: default
+title: 오늘의 타로 무료 뽑기
+description: 카드 한 장으로 확인하는 오늘의 메시지. 클릭 한 번으로 오늘의 타로를 무료로 뽑아보세요.
+permalink: /tarot/today/
+---
+
+<div class="hero">
+  <span class="eyebrow">🔮 오늘의 타로</span>
+  <h1>오늘, 카드가<br><span class="accent">전하는 메시지는?</span></h1>
+  <p>카드를 클릭해서 뒤집어보세요. 하루에 한 번, 마음을 정리하고 싶을 때 뽑아보기 좋아요.</p>
+</div>
+
+<div class="page-with-sidebar">
+<div>
+
+  <div id="drawArea" style="display:flex;justify-content:center;padding:20px 0 30px;"></div>
+  <div id="resultArea" style="display:none;"></div>
+
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div style="text-align:center;margin:20px 0;">
+    <button class="btn-gold" onclick="location.reload()">🔄 다시 뽑기</button>
+  </div>
+
+  <div class="notice-box">
+    💡 카드는 새로고침할 때마다 무작위로 다시 섞입니다. 마음이 이끄는 순간에 뽑아보세요.
+  </div>
+
+  <div style="text-align:center;margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="/tarot/spread/love/" class="btn-ghost">💕 연애운 3카드 보기</a>
+    <a href="/tarot/" class="btn-ghost">🃏 78장 카드 사전</a>
+  </div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+<script src="{{ '/assets/js/tarot-data.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/tarot-draw.js' | relative_url }}"></script>
+<script>
+  TarotDraw.init('drawArea', ['오늘의 카드'], 'resultArea');
+</script>

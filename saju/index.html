@@ -1,0 +1,183 @@
+---
+layout: default
+title: 사주팔자 무료 계산기
+description: 생년월일시만 입력하면 나만의 사주팔자(四柱八字)를 무료로 확인하세요. 년주·월주·일주·시주와 오행 분석, 일간별 성격 해석까지 제공합니다.
+---
+
+<div class="hero">
+  <span class="eyebrow">✨ 무료 사주팔자 계산기</span>
+  <h1>생년월일로 보는<br><span class="accent">나의 사주팔자</span></h1>
+  <p>태양의 절기를 기준으로 계산하는 정통 명리학 방식입니다.<br>생년월일과 태어난 시간을 입력해보세요.</p>
+</div>
+
+<div class="page-with-sidebar">
+<div>
+
+  <div class="form-panel">
+    <div class="form-row">
+      <div class="form-field">
+        <label>태어난 연도</label>
+        <input type="number" id="inYear" placeholder="1990" min="1900" max="2026">
+      </div>
+      <div class="form-field">
+        <label>월</label>
+        <input type="number" id="inMonth" placeholder="5" min="1" max="12">
+      </div>
+      <div class="form-field">
+        <label>일</label>
+        <input type="number" id="inDay" placeholder="15" min="1" max="31">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label>시</label>
+        <input type="number" id="inHour" placeholder="14" min="0" max="23">
+      </div>
+      <div class="form-field">
+        <label>분(모르면 비워두세요)</label>
+        <input type="number" id="inMin" placeholder="0" min="0" max="59">
+      </div>
+      <div class="form-field">
+        <label>성별</label>
+        <div class="gender-toggle">
+          <button type="button" id="btnMale" class="active">남</button>
+          <button type="button" id="btnFemale">여</button>
+        </div>
+      </div>
+    </div>
+    <label style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-muted);margin-bottom:18px;">
+      <input type="checkbox" id="unknownTime" style="width:16px;height:16px;"> 태어난 시간을 몰라요 (시주는 생략하고 계산)
+    </label>
+    <button class="btn-gold" id="btnCalc" style="width:100%;padding:15px;font-size:1rem;">🔮 사주팔자 보기</button>
+  </div>
+
+  <div id="resultArea" style="display:none;">
+
+    <div class="info-panel" style="text-align:center;">
+      <h2 style="justify-content:center;">나의 사주 명식</h2>
+      <p id="resultSummary" style="font-size:1.02rem;color:var(--text);"></p>
+    </div>
+
+    <table class="palja-table">
+      <tr>
+        <th>시주</th><th>일주 (나)</th><th>월주</th><th>년주</th>
+      </tr>
+      <tr id="paljaRow"></tr>
+    </table>
+
+    <!-- 광고 -->
+    <div class="ad-slot">{% include ad.html %}</div>
+
+    <div class="info-panel">
+      <h2>🌱 일간(日干)으로 보는 나의 기본 성향</h2>
+      <div id="dayStemContent"></div>
+    </div>
+
+    <div class="info-panel">
+      <h2>⚖️ 오행(五行) 분포</h2>
+      <div id="ohaengChart" style="margin-bottom:14px;"></div>
+      <div id="ohaengText"></div>
+    </div>
+
+    <div class="notice-box">
+      💡 사주 해석은 일간·오행뿐 아니라 십성·대운·용신 등을 종합적으로 봐야 더 정확합니다. 이 계산기는 기본 뼈대(명식)와 일간·오행 중심의 간단한 참고 해석을 제공합니다.
+    </div>
+
+    <div style="text-align:center;margin-top:24px;">
+      <a href="/gunghap/" class="btn-ghost">💕 이 사주로 궁합 보기 →</a>
+    </div>
+  </div>
+
+</div>
+<aside class="tool-sidebar"></aside>
+</div>
+
+<!-- 콘텐츠 -->
+<div class="section">
+<div class="section-inner" style="max-width:760px;">
+  <h2 class="section-title">📖 사주팔자란?</h2>
+  <div class="info-panel">
+    <p>사주팔자(四柱八字)는 태어난 <strong>년·월·일·시</strong> 네 가지 기둥(四柱)을 각각 천간(天干)과 지지(地支) 두 글자씩, 총 여덟 글자(八字)로 나타낸 것입니다. 동양 명리학에서는 이 여덟 글자의 조합과 오행(목·화·토·금·수)의 균형을 통해 타고난 기질과 삶의 흐름을 해석합니다.</p>
+    <p style="margin-top:12px;">특히 <strong>월주(月柱)</strong>는 태어난 달의 절기(節氣)를 기준으로 정해지는데, 이는 음력 달력의 월이 아니라 입춘·경칩·청명 등 24절기 중 12개의 절입시각을 기준으로 삼습니다. 이 계산기는 실제 태양의 황경(黃經)을 계산해 절기 경계를 정확히 산출합니다.</p>
+  </div>
+</div>
+</div>
+
+<script src="{{ '/assets/js/saju-engine.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/saju-content.js' | relative_url }}"></script>
+<script>
+var selectedGender = 'male';
+document.getElementById('btnMale').addEventListener('click', function(){ selectedGender='male'; this.classList.add('active'); document.getElementById('btnFemale').classList.remove('active'); });
+document.getElementById('btnFemale').addEventListener('click', function(){ selectedGender='female'; this.classList.add('active'); document.getElementById('btnMale').classList.remove('active'); });
+
+document.getElementById('btnCalc').addEventListener('click', function() {
+  var y = parseInt(document.getElementById('inYear').value, 10);
+  var m = parseInt(document.getElementById('inMonth').value, 10);
+  var d = parseInt(document.getElementById('inDay').value, 10);
+  var unknownTime = document.getElementById('unknownTime').checked;
+  var hour = unknownTime ? 12 : (parseInt(document.getElementById('inHour').value, 10) || 0);
+  var min = unknownTime ? 0 : (parseInt(document.getElementById('inMin').value, 10) || 0);
+
+  if (!y || !m || !d || y < 1900 || y > 2026 || m < 1 || m > 12 || d < 1 || d > 31) {
+    alert('생년월일을 정확히 입력해주세요 (1900~2026년).');
+    return;
+  }
+
+  var r = SajuEngine.calcSaju(y, m, d, hour, min);
+  renderResult(r, unknownTime);
+  document.getElementById('resultArea').style.display = 'block';
+  document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth' });
+});
+
+function pillarCell(p, label) {
+  return '<td class="palja-cell"><span class="stem">' + p.stem + '</span><span class="branch">' + p.branch + '</span><span class="label">' + label + '</span></td>';
+}
+
+function renderResult(r, unknownTime) {
+  var animalInfo = SajuContent.ANIMAL_INFO[r.animal];
+  document.getElementById('resultSummary').innerHTML =
+    r.birthInfo.y + '년 ' + r.birthInfo.m + '월 ' + r.birthInfo.d + '일' + (unknownTime ? '' : ' ' + r.birthInfo.hour + '시') +
+    ' 생 · ' + animalInfo.emoji + ' ' + r.animal + '띠 (' + r.sajuYear + '년 사주 기준)';
+
+  var row = '';
+  row += unknownTime ? '<td class="palja-cell" style="opacity:.4;"><span class="stem">?</span><span class="branch">?</span><span class="label">시간모름</span></td>' : pillarCell(r.hourPillar, '시주');
+  row += pillarCell(r.dayPillar, '일주');
+  row += pillarCell(r.monthPillar, '월주');
+  row += pillarCell(r.yearPillar, '년주');
+  document.getElementById('paljaRow').innerHTML = row;
+
+  var ds = SajuContent.DAY_STEM_CONTENT[r.dayPillar.stem];
+  document.getElementById('dayStemContent').innerHTML =
+    '<div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;">' +
+    '<div style="font-size:3rem;line-height:1;">' + ds.symbol + '</div>' +
+    '<div style="flex:1;min-width:200px;">' +
+    '<div style="font-weight:800;font-size:1.1rem;color:var(--gold-soft);margin-bottom:4px;">일간: ' + r.dayPillar.stem + '(' + ds.hanja + ') — ' + ds.nickname + '</div>' +
+    '<p>' + ds.desc + '</p>' +
+    '<p style="margin-top:10px;"><strong style="color:var(--text);">성격:</strong> ' + ds.personality + '</p>' +
+    '<div class="stat-row" style="margin-top:14px;">' +
+    '<div class="stat-box"><div class="label">강점</div><div class="value" style="font-size:.82rem;">' + ds.strength + '</div></div>' +
+    '<div class="stat-box"><div class="label">주의점</div><div class="value" style="font-size:.82rem;">' + ds.weakness + '</div></div>' +
+    '</div>' +
+    '<p style="margin-top:10px;"><strong style="color:var(--text);">어울리는 분야:</strong> ' + ds.job + '</p>' +
+    '</div></div>';
+
+  var total = 0;
+  for (var k in r.ohaengCount) total += r.ohaengCount[k];
+  var order = ['목','화','토','금','수'];
+  var colors = {목:'#6EE7B7', 화:'#F87171', 토:'#E8B84B', 금:'#E5E7EB', 수:'#93C5FD'};
+  var chartHtml = '<div style="display:flex;gap:6px;height:28px;border-radius:8px;overflow:hidden;">';
+  order.forEach(function(k){
+    var pct = (r.ohaengCount[k]/total*100);
+    if (pct > 0) chartHtml += '<div style="width:'+pct+'%;background:'+colors[k]+';display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#1a1a1a;">'+(r.ohaengCount[k]>0?k:'')+'</div>';
+  });
+  chartHtml += '</div>';
+  document.getElementById('ohaengChart').innerHTML = chartHtml;
+
+  var maxK = order.reduce(function(a,b){ return r.ohaengCount[a] >= r.ohaengCount[b] ? a : b; });
+  var minK = order.reduce(function(a,b){ return r.ohaengCount[a] <= r.ohaengCount[b] ? a : b; });
+  var mInfo = SajuContent.OHAENG_MEANING[maxK], nInfo = SajuContent.OHAENG_MEANING[minK];
+  document.getElementById('ohaengText').innerHTML =
+    '<p>여덟 글자 중 <strong style="color:var(--gold-soft);">' + mInfo.name + '</strong>(' + mInfo.trait + ') 기운이 ' + r.ohaengCount[maxK] + '개로 가장 많습니다. ' + mInfo.excess + '</p>' +
+    (r.ohaengCount[minK] === 0 ? '<p style="margin-top:8px;"><strong style="color:var(--purple-light);">' + nInfo.name + '</strong> 기운이 사주에 없습니다. ' + nInfo.lack + '</p>' : '');
+}
+</script>
