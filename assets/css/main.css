@@ -78,6 +78,47 @@ img { max-width: 100%; }
 }
 .header-nav a:hover, .header-nav a.active { color: var(--gold-soft); background: rgba(232,184,75,.1); }
 
+/* ===== 우아하우스 패밀리 사이트 바 (wooa-sites-bar.js 컨테이너) ===== */
+.our-sites-bar {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+.our-sites-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 7px 20px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.our-sites-label {
+  color: var(--text-dim);
+  font-size: .88rem;
+  font-weight: 600;
+  letter-spacing: .3px;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+}
+.our-sites-links {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+.our-sites-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: .78rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+.our-sites-links a:hover { background: rgba(255,255,255,.12); color: var(--text); }
+.our-sites-links a.active { background: rgba(255,255,255,.18); color: var(--text); }
+
 /* ===== 히어로 ===== */
 .hero {
   position: relative; z-index: 1;
